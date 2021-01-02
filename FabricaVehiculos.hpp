@@ -9,6 +9,8 @@
 
 #define CANTIDAD_TORQUES 7
 #define CANTIDAD_PLIEGUES 7
+#define CANTIDAD_BITS 8
+#define PORCENTAJE_MUTACION 5
 
 class FabricaVehiculos{
 

@@ -23,7 +23,10 @@ int main(){
     FabricaVehiculos fabrica;
     std::vector<Vehiculo*> poblacion;
 
-    Vehiculo* vehiculo = fabrica.crearVehiculo(255);
+    Vehiculo* padre = fabrica.crearVehiculo(255);
+    Vehiculo* madre = fabrica.crearVehiculo(10);
+
+    Vehiculo* hijo = fabrica.crearHijo(padre, madre);
 
     //for(int contador = 0; contador < CANTIDAD_VEHICULOS; contador++)
     //{

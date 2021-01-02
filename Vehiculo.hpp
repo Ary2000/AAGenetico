@@ -11,7 +11,11 @@ class Vehiculo{
         Pliege* pliege;
 
     public:
+        //Constructor
         Vehiculo(int cromosoma, Torque* torque, Pliege* pliege);
+
+        //get
+        int getCromosoma() { return cromosoma; }
 };
 
 #endif

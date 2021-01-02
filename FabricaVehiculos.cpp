@@ -26,14 +26,12 @@ Vehiculo* FabricaVehiculos::crearVehiculo(int numero)
     int torqueSeleccionado = 0;
     for(int contadorRango = 1; contadorRango <= torques.size(); contadorRango ++)
     {
-        int a = ((double) contadorRango / ((double) torques.size()) * UINT8_MAX) + 1;
         if(numero < ((((double) contadorRango) / ((double) torques.size()) * UINT8_MAX) + 1))
         {
             contadorRango--;
             int pliegeSeleccionado = 0;
             for(int contarRangoPliege = 1; contarRangoPliege <= plieges.size(); contarRangoPliege++)
             {
-                int b = (double)contadorRango/(double)torques.size() * UINT8_MAX + (double)contarRangoPliege/(double)canitdadCombinaciones * UINT8_MAX + 1;
                 if(numero < ((double)contadorRango/(double)torques.size() * UINT8_MAX + (double)contarRangoPliege/(double)canitdadCombinaciones * UINT8_MAX + 1))
                     return new Vehiculo(numero, torques[torqueSeleccionado], plieges[pliegeSeleccionado]);
                
@@ -46,4 +44,41 @@ Vehiculo* FabricaVehiculos::crearVehiculo(int numero)
             torqueSeleccionado++;
     }
     return new Vehiculo(0, NULL, NULL);
+}
+
+Vehiculo* FabricaVehiculos::crearHijo(Vehiculo* padre, Vehiculo* madre)
+{
+    int cromosomaPadre = padre->getCromosoma();
+    int cromosomaMadre = madre->getCromosoma();
+
+    int tipoReproducion = rand() % 3;
+    switch(tipoReproducion)
+    {
+        case 1:
+            cromosomaPadre = cromosomaPadre >> 2;
+            cromosomaPadre = cromosomaPadre << 2;
+            cromosomaMadre = cromosomaMadre << 6;
+            cromosomaMadre = cromosomaMadre >> 6;
+            break;
+        case 2:
+            cromosomaPadre = cromosomaPadre >> 4;
+            cromosomaPadre = cromosomaPadre << 4;
+            cromosomaMadre = cromosomaMadre << 4;
+            cromosomaMadre = cromosomaMadre >> 4;
+            break;
+        case 3:
+            cromosomaPadre = cromosomaPadre >> 6;
+            cromosomaPadre = cromosomaPadre << 6;
+            cromosomaMadre = cromosomaMadre << 2;
+            cromosomaMadre = cromosomaMadre >> 2;
+            break;
+    }
+    int cromosomaHijo = cromosomaPadre + cromosomaMadre;
+    if((rand() % 100) > PORCENTAJE_MUTACION)
+    {
+        int posicionToggle = rand() % 8;
+        cromosomaHijo ^= 1UL << posicionToggle;
+    }
+    
+    return crearVehiculo(cromosomaHijo);
 }
