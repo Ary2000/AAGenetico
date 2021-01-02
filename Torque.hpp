@@ -5,6 +5,8 @@ class Torque{
 
     private:
     //Propiedades
+        int idTorque;
+
         int firmezaMin;
         int firmezaMax;
 
@@ -18,7 +20,7 @@ class Torque{
     
     public:
     //Constructor
-        Torque(int firmezaMin, int firmezaMax, int humedadMin, int humedadMax, int agarreMin, int agarreMax, int energia);
+        Torque(int idTorque, int firmezaMin, int firmezaMax, int humedadMin, int humedadMax, int agarreMin, int agarreMax, int energia);
 
     //Gets
         int getFirmezaMin() { return firmezaMin; }

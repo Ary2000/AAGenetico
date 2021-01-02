@@ -1,17 +1,17 @@
 #ifndef VEHICULO_HPP
 #define VEHICULO_HPP
 
-#define USINT_MAX 65535
+#include "Pliege.hpp"
+#include "Torque.hpp"
 
 class Vehiculo{
     private:
-        unsigned short int fenotipo;
-
-        int torque;
-        int pliegue;
+        int cromosoma;
+        Torque* torque;
+        Pliege* pliege;
 
     public:
-
+        Vehiculo(int cromosoma, Torque* torque, Pliege* pliege);
 };
 
 #endif

@@ -1,10 +1,12 @@
-#ifndef PLIEGUE_H
-#define PLIEGUE_H
+#ifndef PLIEGE_H
+#define PLIEGE_H
 
 class Pliege{
 
     private:
     //Propiedades
+        int idPliege;
+
         int firmezaMin;
         int firmezaMax;
 
@@ -17,6 +19,9 @@ class Pliege{
         int energia;
 
     public:
+    //Constructor
+        Pliege(int idTorque, int firmezaMin, int firmezaMax, int humedadMin, int humedadMax, int agarreMin, int agarreMax, int energia);
+
     //Gets
         int getFirmezaMin() { return firmezaMin; }
         int getFirmezaMax() { return firmezaMax; }
