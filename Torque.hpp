@@ -34,6 +34,11 @@ class Torque{
 
         int getEnergia() { return energia; }
 
+    //Pruebas
+        bool probarFirmeza(int firmeza){ return (firmeza >= firmezaMin && firmeza <= firmezaMax) ? true : false; }
+        bool probarHumedad(int humedad){ return (humedad >= humedadMin && humedad <= humedadMax) ? true : false; }
+        bool probarAgarre(int agarre){ return (agarre >= agarreMin && agarre <= agarreMax) ? true : false; }
+
 };
 
 #endif
