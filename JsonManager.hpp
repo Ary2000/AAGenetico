@@ -1,3 +1,6 @@
+#ifndef JSONMANAGER_HPP
+#define JSONMANAGER_HPP
+
 #include "json.hpp"
 #include <iostream>
 #include <fstream>
@@ -91,7 +94,7 @@ std::vector<std::vector<double>> JsonReader(std::string NombreJson, std::vector<
     std::vector<std::vector<double>> VectorRecorrido = {};
     std::vector<double> bufferDatos = {};
 
-    std::ifstream file(NombreJson);
+    std::ifstream file("C://Users//Ary//Documents//GitHub//AAGenetico//Mapa.json");
     json j = json::parse(file);
 
     for (auto it = j["Tramos"].begin(); it != j["Tramos"].end(); ++it){
@@ -122,3 +125,4 @@ std::vector<std::vector<double>> JsonReader(std::string NombreJson, std::vector<
 
 }
 
+#endif

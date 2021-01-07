@@ -34,6 +34,8 @@ class Pliege{
 
         int getEnergia() { return energia; }
 
+        int getID() { return idPliege; }
+
     //Pruebas
         bool probarFirmeza(int firmeza){ return (firmeza >= firmezaMin && firmeza <= firmezaMax) ? true : false; }
         bool probarHumedad(int humedad){ return (humedad >= humedadMin && humedad <= humedadMax) ? true : false; }

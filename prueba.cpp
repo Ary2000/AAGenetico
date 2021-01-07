@@ -1,4 +1,3 @@
-
 #include "JsonManager.hpp"
 #include <thread>  
 
