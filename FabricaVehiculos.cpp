@@ -54,27 +54,21 @@ Vehiculo* FabricaVehiculos::crearHijo(Vehiculo* padre, Vehiculo* madre)
     int tipoReproducion = rand() % 3;
     switch(tipoReproducion)
     {
+        case 0:
+            cromosomaPadre = cromosomaPadre & 63;  // 63  = 00111111
+            cromosomaMadre = cromosomaMadre & 192; // 192 = 11000000
+            break;
         case 1:
-            cromosomaPadre = cromosomaPadre >> 2;
-            cromosomaPadre = cromosomaPadre << 2;
-            cromosomaMadre = cromosomaMadre << 6;
-            cromosomaMadre = cromosomaMadre >> 6;
+            cromosomaPadre = cromosomaPadre & 15;  // 15  = 00001111
+            cromosomaMadre = cromosomaMadre & 240; // 240 = 11110000
             break;
         case 2:
-            cromosomaPadre = cromosomaPadre >> 4;
-            cromosomaPadre = cromosomaPadre << 4;
-            cromosomaMadre = cromosomaMadre << 4;
-            cromosomaMadre = cromosomaMadre >> 4;
-            break;
-        case 3:
-            cromosomaPadre = cromosomaPadre >> 6;
-            cromosomaPadre = cromosomaPadre << 6;
-            cromosomaMadre = cromosomaMadre << 2;
-            cromosomaMadre = cromosomaMadre >> 2;
+            cromosomaPadre = cromosomaPadre & 3; //   3   = 00000011
+            cromosomaMadre = cromosomaMadre & 252; // 252 = 11111100
             break;
     }
     int cromosomaHijo = cromosomaPadre + cromosomaMadre;
-    if((rand() % 100) > PORCENTAJE_MUTACION)
+    if((rand() % 100) < PORCENTAJE_MUTACION)
     {
         int posicionToggle = rand() % 8;
         cromosomaHijo ^= 1UL << posicionToggle;

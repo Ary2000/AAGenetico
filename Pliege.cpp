@@ -1,6 +1,6 @@
 #include "Pliege.hpp"
 
-Pliege::Pliege(int idPliege, int firmezaMax, int firmezaMin, int humedadMax, int humedadMin, int agarreMax, int agarreMin, int energia)
+Pliege::Pliege(int idPliege, int firmezaMin, int firmezaMax, int humedadMin, int humedadMax, int agarreMin, int agarreMax, int energia)
 {
     this->idPliege = idPliege;
     this->firmezaMax = firmezaMax;
