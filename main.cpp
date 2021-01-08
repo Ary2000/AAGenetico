@@ -10,18 +10,20 @@
 #include "Vehiculo.hpp"
 #include "FabricaVehiculos.hpp"
 #include "Tramo.hpp"
-#include "JsonManager.hpp"
+//#include "JsonManager.hpp"
+#include "Explorador.hpp"
 
 #include "Torque.cpp"
 #include "Pliege.cpp"
 #include "Vehiculo.cpp"
 #include "FabricaVehiculos.cpp"
 #include "Tramo.cpp"
+#include "Explorador.cpp"
 
 #define PORCENTAJE_MUERTE 0.3 // 30%
 #define CANTIDAD_VEHICULOS 10
 #define CANTIDAD_CICLOS 5
-
+/*
 using namespace std;
 
 std::vector<std::vector<double>>* v = new vector<std::vector<double>>();
@@ -85,11 +87,11 @@ void algortimoGenetico(Tramo* tramo, FabricaVehiculos* fabrica)
     reproduccionMuerte(poblacion, fabrica);
     cout << "El mejor carrito para el tramo con los datos: " << endl << "Firmeza: " << tramo->getfirmeza() << endl << "Humedad: " << tramo->getHumedad() << endl << "Agarre: " << tramo->getAgarre() << endl << "Seria el vehiculo con las siguientes configuraciones:" << endl << "Torque: " << poblacion[0]->getIDTorque() << endl << "Pliege: " << poblacion[0]->getIDPliege() << endl;
 }
-
+*/
 int main(){
 
     srand(time(NULL));
-
+    /*
     FabricaVehiculos* fabrica = new FabricaVehiculos();
     Tramo* tramo = new Tramo(0, 100, 10, 100, 5);
     
@@ -110,6 +112,11 @@ int main(){
     first.join();
     
     cout<<endl<<"Finish";
+    */
+
+    Explorador explorador;
+    explorador.realizarTrabajo();
+
 
     return 0;
 }
