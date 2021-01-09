@@ -21,7 +21,7 @@ FabricaVehiculos::FabricaVehiculos()
     canitdadCombinaciones = torques.size() * plieges.size();
 }
 
-Vehiculo* FabricaVehiculos::crearVehiculo(int numero)
+Vehiculo* FabricaVehiculos::crearVehiculo(int numero, double energia)
 {
     int torqueSeleccionado = 0;
     for(int contadorRango = 1; contadorRango <= torques.size(); contadorRango ++)
@@ -33,7 +33,7 @@ Vehiculo* FabricaVehiculos::crearVehiculo(int numero)
             for(int contarRangoPliege = 1; contarRangoPliege <= plieges.size(); contarRangoPliege++)
             {
                 if(numero < ((double)contadorRango/(double)torques.size() * UINT8_MAX + (double)contarRangoPliege/(double)canitdadCombinaciones * UINT8_MAX + 1))
-                    return new Vehiculo(numero, torques[torqueSeleccionado], plieges[pliegeSeleccionado]);
+                    return new Vehiculo(numero, torques[torqueSeleccionado], plieges[pliegeSeleccionado], energia);
                
                 else
                     pliegeSeleccionado++;
@@ -43,10 +43,10 @@ Vehiculo* FabricaVehiculos::crearVehiculo(int numero)
         else
             torqueSeleccionado++;
     }
-    return new Vehiculo(0, NULL, NULL);
+    return new Vehiculo(0, NULL, NULL, 0);
 }
 
-Vehiculo* FabricaVehiculos::crearHijo(Vehiculo* padre, Vehiculo* madre)
+Vehiculo* FabricaVehiculos::crearHijo(Vehiculo* padre, Vehiculo* madre, double energia)
 {
     int cromosomaPadre = padre->getCromosoma();
     int cromosomaMadre = madre->getCromosoma();
@@ -74,5 +74,5 @@ Vehiculo* FabricaVehiculos::crearHijo(Vehiculo* padre, Vehiculo* madre)
         cromosomaHijo ^= 1UL << posicionToggle;
     }
     
-    return crearVehiculo(cromosomaHijo);
+    return crearVehiculo(cromosomaHijo, energia);
 }

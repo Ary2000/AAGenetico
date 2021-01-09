@@ -16,8 +16,11 @@
 #include "JsonManager.hpp"
 
 #define PORCENTAJE_MUERTE 0.3 // 30%
-#define CANTIDAD_VEHICULOS 10
+#define CANTIDAD_VEHICULOS 100
 #define CANTIDAD_CICLOS 5
+#define ENERGIA_TOTAL 7000
+#define CICLOS_FALLIDOS_MAXIMO 5
+#define CICLOS 10
 
 class Explorador{
 
@@ -26,6 +29,7 @@ class Explorador{
         std::vector<std::vector<double>>* v = new std::vector<std::vector<double>>();
         std::vector<std::vector<double>> &vr = *v;
         FabricaVehiculos fabrica;
+        double energiaActual = ENERGIA_TOTAL;
 
         //Metodos
         //bool comparacion(const std::vector<double> elemento1, std::vector<double> elemento2);
@@ -33,6 +37,8 @@ class Explorador{
         void reproduccionMuerte(std::vector<Vehiculo*>& poblacion);
         std::vector<Vehiculo*> recorrerTramo(std::vector<Vehiculo*> poblacion, Tramo* tramo);
         void algortimoGenetico(Tramo* tramo);
+        bool compararPropiedadesVehiculoTramo(Vehiculo* vehiculo, Tramo* tramo);
+        bool recorreConSuficienteEnergia(Vehiculo* vehiculo, Tramo* tramo);
 
     public:
         Explorador();

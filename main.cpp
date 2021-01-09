@@ -23,9 +23,9 @@
 #define PORCENTAJE_MUERTE 0.3 // 30%
 #define CANTIDAD_VEHICULOS 10
 #define CANTIDAD_CICLOS 5
-/*
-using namespace std;
 
+using namespace std;
+/*
 std::vector<std::vector<double>>* v = new vector<std::vector<double>>();
 std::vector<std::vector<double>> &vr = *v;
 

@@ -4,20 +4,20 @@
 #include "Pliege.hpp"
 #include "Torque.hpp"
 
-#define ENERGIA_TOTAL 7000
+//#define ENERGIA_TOTAL 7000
 
 class Vehiculo{
     private:
         int cromosoma;
         Torque* torque;
         Pliege* pliege;
-        double energia = ENERGIA_TOTAL;
+        double energia;// = ENERGIA_TOTAL;
 
         double energiaPorKm;
 
     public:
         //Constructor
-        Vehiculo(int cromosoma, Torque* torque, Pliege* pliege);
+        Vehiculo(int cromosoma, Torque* torque, Pliege* pliege, double energia);
 
         //get
         int getCromosoma() { return cromosoma; }
