@@ -9,7 +9,7 @@
 #include "rxcpp/rx.hpp"
 
 using json = nlohmann::json;
-using namespace std;
+//using namespace std;
 
 std::vector<double> parserDatos(std::string Tramo){
     int indice = 10;
@@ -72,7 +72,7 @@ void JsonWritter(std::vector<std::vector<double>> DatosTramos){
     std::string NumTramo;
     for (int indice = 0; indice < DatosTramos.size(); indice++)
     {
-        NumTramo = "tramo"+to_string(indice);
+        NumTramo = "tramo"+std::to_string(indice);
         jsonfile["Tramos"][NumTramo]["Agarre"] = DatosTramos[indice][0];
         jsonfile["Tramos"][NumTramo]["Firmeza"] = DatosTramos[indice][1];
         jsonfile["Tramos"][NumTramo]["Humedad"] = DatosTramos[indice][2];

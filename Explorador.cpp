@@ -60,7 +60,7 @@ void Explorador::realizarTrabajo()
     for(int posicionTramo = 0; posicionTramo < tramos.size(); posicionTramo++)
         algortimoGenetico(tramos[posicionTramo]);
 
-    cout<<endl<<"Finish";
+    std::cout << std::endl <<"Finish";
 }
 
 bool comparacion(const std::vector<double> elemento1, std::vector<double> elemento2)
