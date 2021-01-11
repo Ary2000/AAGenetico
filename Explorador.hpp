@@ -30,6 +30,7 @@ class Explorador{
         std::vector<std::vector<double>> &vr = *v;
         FabricaVehiculos fabrica;
         double energiaActual = ENERGIA_TOTAL;
+        std::vector<Tramo*> tramos;
 
         //Metodos
         

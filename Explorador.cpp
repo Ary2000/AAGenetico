@@ -34,16 +34,31 @@ void Explorador::algortimoGenetico(Tramo* tramo)
 
 void Explorador::realizarTrabajo()
 {
+    std::thread first (JsonRede,tramos);
     srand(time(NULL));
     
-    std::vector<Tramo*> tramos;
-    tramos.push_back(new Tramo(0, 100, 10, 100, 5));
+    
+    //tramos.push_back(new Tramo(0, 100, 10, 100, 5));
     
     //Codigo que le el mapa
+   while (true)
+   {
+       if (tramos.size()!=0)
+       {
+           if (tramos[0]==nullptr)
+           {
+               break;
+           }
+           algortimoGenetico(tramos[0]);
+           tramos.erase(tramos.begin());
+       }
+       
+   }
+   
+   // while(int posicionTramo = 0; posicionTramo < tramos.size(); posicionTramo++)
+        //algortimoGenetico(tramos[posicionTramo]);
 
-    for(int posicionTramo = 0; posicionTramo < tramos.size(); posicionTramo++)
-        algortimoGenetico(tramos[posicionTramo]);
-
+    //first.join();
     std::cout << std::endl <<"Finish";
 }
 

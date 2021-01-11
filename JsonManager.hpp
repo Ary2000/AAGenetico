@@ -2,10 +2,13 @@
 #define JSONMANAGER_HPP
 
 #include "json.hpp"
+#include "Tramo.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
+
+
 #include "rxcpp/rx.hpp"
 
 using json = nlohmann::json;
@@ -86,16 +89,16 @@ void JsonWritter(std::vector<std::vector<double>> DatosTramos){
     file << jsonfile.dump(1);
 }
 
-std::vector<std::vector<double>> JsonReader(std::string NombreJson, std::vector<std::vector<double>>* PointerVectorGlobal){
+void JsonReader(std::vector<Tramo*> &VectorPunteros){
 
     json bufferJson;
     std::string bufferString;
-    std::vector<std::vector<double>> &DatosTramos = *PointerVectorGlobal;
+    //std::vector<std::vector<double>> &DatosTramos = *PointerVectorGlobal;
     std::vector<std::vector<double>> VectorRecorrido = {};
     std::vector<double> bufferDatos = {};
 
-    //std::ifstream file("C://Users//tian_//OneDrive//Desktop//Caso#6//AAGenetico//Mapa.json");
-    std::ifstream file("C://Users//Ary//Documents//GitHub//AAGenetico//Mapa.json");
+    std::ifstream file("C://Users//tian_//OneDrive//Desktop//Caso#6//AAGenetico//Mapa.json");
+    //std::ifstream file("C://Users//Ary//Documents//GitHub//AAGenetico//Mapa.json");
     json j = json::parse(file);
 
     for (auto it = j["Tramos"].begin(); it != j["Tramos"].end(); ++it){
@@ -105,7 +108,8 @@ std::vector<std::vector<double>> JsonReader(std::string NombreJson, std::vector<
     auto values = rxcpp::observable<>::timer<>(std::chrono::seconds(10));
     values.subscribe([](int v) {});
     bufferDatos= parserDatos(bufferString);
-    DatosTramos.push_back(bufferDatos);
+    //DatosTramos.push_back(bufferDatos);
+    VectorPunteros.push_back(new Tramo(bufferDatos[4],bufferDatos[3],bufferDatos[1], bufferDatos[2], bufferDatos[0]));
     VectorRecorrido.push_back(bufferDatos);
     JsonWritter(VectorRecorrido);
     //cout << it.key() << " | " << it.value() << "\n";
@@ -121,8 +125,8 @@ std::vector<std::vector<double>> JsonReader(std::string NombreJson, std::vector<
         cout<<endl;
     }
     */
-    DatosTramos.push_back({9999.99});
-    return DatosTramos;
+    VectorPunteros.push_back(nullptr);
+    
 
 }
 
