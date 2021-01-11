@@ -1,18 +1,18 @@
 {
  "Tramos": {
   "tramo0": {
-   "Agarre": 38.0,
-   "Firmeza": 33.0,
-   "Humedad": 90.0,
-   "KmEnd": 200.0,
+   "Agarre": 5.0,
+   "Firmeza": 10.0,
+   "Humedad": 100.0,
+   "KmEnd": 100.0,
    "KmStart": 0.0
   },
   "tramo1": {
    "Agarre": 23.0,
    "Firmeza": 43.0,
    "Humedad": 30.0,
-   "KmEnd": 600.0,
-   "KmStart": 200.0
+   "KmEnd": 200.0,
+   "KmStart": 101.0
   }
  }
 }

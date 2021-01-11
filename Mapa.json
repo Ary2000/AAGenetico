@@ -1,7 +1,7 @@
 {
     "Tramos":{
-        "tramo1":{"Agarre":38,"Firmeza":33,"Humedad":90,"KmEnd":200,"KmStart":0},
-        "tramo2":{"Agarre":23,"Firmeza":43,"Humedad":30,"KmEnd":600,"KmStart":200}
+        "tramo1":{"Agarre":5,"Firmeza":10,"Humedad":100,"KmEnd":100,"KmStart":0},
+        "tramo2":{"Agarre":23,"Firmeza":43,"Humedad":30,"KmEnd":200,"KmStart":101}
     }           
     
 }        

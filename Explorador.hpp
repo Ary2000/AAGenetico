@@ -17,7 +17,7 @@
 
 #define PORCENTAJE_MUERTE 0.3 // 30%
 #define CANTIDAD_VEHICULOS 100
-#define CANTIDAD_CICLOS 5
+#define CANTIDAD_CICLOS 10
 #define ENERGIA_TOTAL 7000
 #define CICLOS_FALLIDOS_MAXIMO 5
 #define CICLOS 10
@@ -39,6 +39,7 @@ class Explorador{
         void algortimoGenetico(Tramo* tramo);
         bool compararPropiedadesVehiculoTramo(Vehiculo* vehiculo, Tramo* tramo);
         bool recorreConSuficienteEnergia(Vehiculo* vehiculo, Tramo* tramo);
+        //void metodoThread();
 
     public:
         Explorador();

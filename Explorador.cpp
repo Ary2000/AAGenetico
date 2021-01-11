@@ -6,6 +6,11 @@ Explorador::Explorador()
     std::cout << "Se realizo" << std::endl;
 }
 
+void metodoThread(std::vector<Tramo*> &tramos)
+{
+    JsonReader(tramos);
+}
+
 void Explorador::algortimoGenetico(Tramo* tramo)
 {
     std::vector<Vehiculo*> poblacion;
@@ -22,19 +27,20 @@ void Explorador::algortimoGenetico(Tramo* tramo)
         double energiaAGastar = poblacion[0]->getEnergiaPorKm() * tramo->getDistancia();
         if(compararPropiedadesVehiculoTramo(poblacion[0], tramo) && poblacion[0]->getEnergiaPorKm() * tramo->getDistancia() <= poblacion[0]->getEnergiaTotal())
         {
-            std::cout << "El mejor carrito para el tramo con los datos: " << std::endl << "Firmeza: " << tramo->getfirmeza() << std::endl << "Humedad: " << tramo->getHumedad() << std::endl << "Agarre: " << tramo->getAgarre() << std::endl << "Seria el vehiculo con las siguientes configuraciones:" << std::endl << "Torque: " << poblacion[0]->getIDTorque() << std::endl << "Pliege: " << poblacion[0]->getIDPliege() << std::endl;
+            std::cout << "Tramo:" << std::endl << "Firmeza: " << tramo->getfirmeza() << std::endl << "Humedad: " << tramo->getHumedad() << std::endl << "Agarre: " << tramo->getAgarre() << std::endl << "Mejor configuracion:" << std::endl << "Torque: " << poblacion[0]->getIDTorque() << std::endl << "Pliege: " << poblacion[0]->getIDPliege() << std::endl;
             seEncontroRespuesta = true;
             energiaActual -= energiaAGastar;
             break;
         }
     }
     if(!seEncontroRespuesta)
-        std::cout << "No se encontro ninguna configuracion que recorra todo el tramo sin gastar toda la energia" << std::endl;
+        std::cout << "Tramo:" << std::endl << "Firmeza: " << tramo->getfirmeza() << std::endl << "Humedad: " << tramo->getHumedad() << std::endl << "Agarre: " << tramo->getAgarre() << std::endl;
+        std::cout << "Mejor configuracion" << std::endl << "No se encontro ninguna configuracion que pueda recorrer todo el tramo o tenga suficiente energia para recorrelo todo" << std::endl;
 }
 
 void Explorador::realizarTrabajo()
 {
-    std::thread first (JsonRede,tramos);
+    std::thread first (metodoThread, std::ref(tramos));
     srand(time(NULL));
     
     
@@ -58,7 +64,7 @@ void Explorador::realizarTrabajo()
    // while(int posicionTramo = 0; posicionTramo < tramos.size(); posicionTramo++)
         //algortimoGenetico(tramos[posicionTramo]);
 
-    //first.join();
+    first.join();
     std::cout << std::endl <<"Finish";
 }
 

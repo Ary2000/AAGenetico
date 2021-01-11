@@ -97,8 +97,8 @@ void JsonReader(std::vector<Tramo*> &VectorPunteros){
     std::vector<std::vector<double>> VectorRecorrido = {};
     std::vector<double> bufferDatos = {};
 
-    std::ifstream file("C://Users//tian_//OneDrive//Desktop//Caso#6//AAGenetico//Mapa.json");
-    //std::ifstream file("C://Users//Ary//Documents//GitHub//AAGenetico//Mapa.json");
+    //std::ifstream file("C://Users//tian_//OneDrive//Desktop//Caso#6//AAGenetico//Mapa.json");
+    std::ifstream file("C://Users//Ary//Documents//GitHub//AAGenetico//Mapa.json");
     json j = json::parse(file);
 
     for (auto it = j["Tramos"].begin(); it != j["Tramos"].end(); ++it){
@@ -126,8 +126,6 @@ void JsonReader(std::vector<Tramo*> &VectorPunteros){
     }
     */
     VectorPunteros.push_back(nullptr);
-    
-
 }
 
 #endif
