@@ -22,8 +22,8 @@ class FabricaVehiculos{
 
     public:
         FabricaVehiculos();
-        Vehiculo* crearVehiculo(int numero);
-        Vehiculo* crearHijo(Vehiculo* padre, Vehiculo* madre);
+        Vehiculo* crearVehiculo(int numero, double energia);
+        Vehiculo* crearHijo(Vehiculo* padre, Vehiculo* madre, double energia);
 };
 
 #endif
