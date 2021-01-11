@@ -15,18 +15,21 @@ void printVector(std::vector<double> vector){
 
 int main()
 {
-    int flag=0;
     std::thread first (JsonReader,"Mapa.json",v);
-    while(flag<2){
+    while(true){
         if (vr.size()!=0)
         {
             std::thread second (printVector,vr[0]);
             second.join();
             cout<<endl;
-            vr.erase(vr.begin());
-            flag++;
-                
+            if (vr[0][0]==9999.99)
+        {
+            break;
         }
+            vr.erase(vr.begin()); 
+        }
+        
+        
     }
 
     first.join();

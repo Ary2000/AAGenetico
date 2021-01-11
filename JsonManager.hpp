@@ -94,6 +94,7 @@ std::vector<std::vector<double>> JsonReader(std::string NombreJson, std::vector<
     std::vector<std::vector<double>> VectorRecorrido = {};
     std::vector<double> bufferDatos = {};
 
+    //std::ifstream file("C://Users//tian_//OneDrive//Desktop//Caso#6//AAGenetico//Mapa.json");
     std::ifstream file("C://Users//Ary//Documents//GitHub//AAGenetico//Mapa.json");
     json j = json::parse(file);
 
@@ -120,7 +121,7 @@ std::vector<std::vector<double>> JsonReader(std::string NombreJson, std::vector<
         cout<<endl;
     }
     */
-   
+    DatosTramos.push_back({9999.99});
     return DatosTramos;
 
 }
