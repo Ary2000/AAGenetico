@@ -10,9 +10,8 @@ void Explorador::algortimoGenetico(Tramo* tramo)
 {
     std::vector<Vehiculo*> poblacion;
     bool seEncontroRespuesta = false;
-    for(int contadorVehiculos = 0; contadorVehiculos < CANTIDAD_VEHICULOS - 1; contadorVehiculos++)
+    for(int contadorVehiculos = 0; contadorVehiculos < CANTIDAD_VEHICULOS; contadorVehiculos++)
             poblacion.push_back(fabrica.crearVehiculo(rand() % 255, energiaActual));
-    poblacion.push_back(fabrica.crearVehiculo(0, energiaActual));
     for(int ciclosAlgoritmo = 0; ciclosAlgoritmo < CICLOS_FALLIDOS_MAXIMO; ciclosAlgoritmo++)
     {
         for(int ciclosVida = 0; ciclosVida < CICLOS; ciclosVida++)
@@ -39,24 +38,9 @@ void Explorador::realizarTrabajo()
     
     std::vector<Tramo*> tramos;
     tramos.push_back(new Tramo(0, 100, 10, 100, 5));
-    /*
-    int flag=0;
-    std::thread first (JsonReader,"C://Users//Ary/Documents//GitHub//AAGenetico//Mapa.json",v);
-    while(flag<2){
-        if (vr.size()!=0)
-        {
-            std::thread second (&Explorador::algortimoGenetico, this, tramo);
-            second.join();
-            cout<<endl;
-            vr.erase(vr.begin());
-            flag++;
-                
-        }
-    }
-
-    first.join();
-    */
     
+    //Codigo que le el mapa
+
     for(int posicionTramo = 0; posicionTramo < tramos.size(); posicionTramo++)
         algortimoGenetico(tramos[posicionTramo]);
 
@@ -65,6 +49,7 @@ void Explorador::realizarTrabajo()
 
 bool comparacion(const std::vector<double> elemento1, std::vector<double> elemento2)
 {
+    ///Compara kms
     if(elemento1[1] > elemento2[1]) return true;
     if(elemento1[1] == elemento2[1]) return elemento1[2] < elemento2[2];
     return false;

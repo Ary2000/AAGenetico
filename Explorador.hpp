@@ -32,7 +32,6 @@ class Explorador{
         double energiaActual = ENERGIA_TOTAL;
 
         //Metodos
-        //bool comparacion(const std::vector<double> elemento1, std::vector<double> elemento2);
         
         void reproduccionMuerte(std::vector<Vehiculo*>& poblacion);
         std::vector<Vehiculo*> recorrerTramo(std::vector<Vehiculo*> poblacion, Tramo* tramo);
