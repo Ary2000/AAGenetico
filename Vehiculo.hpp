@@ -26,9 +26,13 @@ class Vehiculo{
         int getIDTorque() { return torque->getID(); }
         int getIDPliege() { return pliege->getID(); }
         
-        bool probarFirmeza(int firmeza) { return (torque->probarFirmeza(firmeza) && pliege->probarFirmeza(firmeza)) ? true : false; }
-        bool probarHumeadad(int humedad) {return (torque->probarHumedad(humedad) && pliege->probarHumedad(humedad)) ? true : false; }
-        bool probarAgarre(int agarre) { return (torque->probarAgarre(agarre) && pliege->probarAgarre(agarre)) ? true : false; }
+        int probarFirmezaTorque(int firmeza);
+        int probarHumedadTorque(int humedad);
+        int probarAgarreTorque(int agarre);
+
+        int probarFirmezaPliege(int firmeza);
+        int probarHumedadPliege(int humedad);
+        int probarAgarrePliege(int agarre);
 };
 
 #endif

@@ -16,7 +16,7 @@ class Tramo{
         Tramo(int kmStart, int kmEnd, int firmeza, int humedad, int agarre);
 
         double getDistancia() { return distancia; }
-        int getfirmeza() { return firmeza; }
+        int getFirmeza() { return firmeza; }
         int getHumedad() { return humedad; }
         int getAgarre() { return agarre; }
 

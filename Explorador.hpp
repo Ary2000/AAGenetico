@@ -37,7 +37,7 @@ class Explorador{
         void reproduccionMuerte(std::vector<Vehiculo*>& poblacion);
         std::vector<Vehiculo*> recorrerTramo(std::vector<Vehiculo*> poblacion, Tramo* tramo);
         void algortimoGenetico(Tramo* tramo);
-        bool compararPropiedadesVehiculoTramo(Vehiculo* vehiculo, Tramo* tramo);
+        int compararPropiedadesVehiculoTramo(Vehiculo* vehiculo, Tramo* tramo);
         bool recorreConSuficienteEnergia(Vehiculo* vehiculo, Tramo* tramo);
         //void metodoThread();
 
