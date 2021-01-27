@@ -50,23 +50,14 @@ Vehiculo* FabricaVehiculos::crearHijo(Vehiculo* padre, Vehiculo* madre, double e
 {
     int cromosomaPadre = padre->getCromosoma();
     int cromosomaMadre = madre->getCromosoma();
+    std::vector<int> combinacionPadre = {63,31,15,7,3};
+    std::vector<int> combinacionMadre = {192,224,240,248,252};
 
-    int tipoReproducion = rand() % 3;
-    switch(tipoReproducion)
-    {
-        case 0:
-            cromosomaPadre = cromosomaPadre & 63;  // 63  = 00111111
-            cromosomaMadre = cromosomaMadre & 192; // 192 = 11000000
-            break;
-        case 1:
-            cromosomaPadre = cromosomaPadre & 15;  // 15  = 00001111
-            cromosomaMadre = cromosomaMadre & 240; // 240 = 11110000
-            break;
-        case 2:
-            cromosomaPadre = cromosomaPadre & 3; //   3   = 00000011
-            cromosomaMadre = cromosomaMadre & 252; // 252 = 11111100
-            break;
-    }
+
+    int tipoReproducion = rand() % 5;
+    cromosomaPadre = cromosomaPadre & combinacionPadre[tipoReproducion];
+    cromosomaMadre = cromosomaMadre & combinacionMadre[tipoReproducion];
+
     int cromosomaHijo = cromosomaPadre + cromosomaMadre;
     if((rand() % 100) < PORCENTAJE_MUTACION)
     {
