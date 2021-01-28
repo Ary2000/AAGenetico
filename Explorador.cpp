@@ -6,41 +6,42 @@ Explorador::Explorador()
     std::cout << "Se realizo" << std::endl;
 }
 
-void metodoThread(std::vector<Tramo*> &tramos)
+void metodoThread(std::vector<Tramo*> &tramos, bool &seSigue)
 {
-    JsonReader(tramos);
+    JsonReader(tramos, seSigue);
 }
 
-void Explorador::algortimoGenetico(Tramo* tramo)
+bool Explorador::algortimoGenetico(Tramo* tramo)
 {
     std::vector<Vehiculo*> poblacion;
     bool seEncontroRespuesta = false;
     for(int contadorVehiculos = 0; contadorVehiculos < CANTIDAD_VEHICULOS; contadorVehiculos++)
             poblacion.push_back(fabrica.crearVehiculo(rand() % 255, energiaActual));
-    for(int ciclosAlgoritmo = 0; ciclosAlgoritmo < CICLOS_FALLIDOS_MAXIMO; ciclosAlgoritmo++)
+    for(int ciclosVida = 0; ciclosVida < CICLOS; ciclosVida++)
     {
-        for(int ciclosVida = 0; ciclosVida < CICLOS; ciclosVida++)
-        {
-            poblacion = recorrerTramo(poblacion, tramo);
-            reproduccionMuerte(poblacion);
-        }
-        double energiaAGastar = poblacion[0]->getEnergiaPorKm() * tramo->getDistancia();
-        if(compararPropiedadesVehiculoTramo(poblacion[0], tramo) && poblacion[0]->getEnergiaPorKm() * tramo->getDistancia() <= poblacion[0]->getEnergiaTotal())
-        {
-            std::cout << "Tramo:" << std::endl << "Firmeza: " << tramo->getFirmeza() << std::endl << "Humedad: " << tramo->getHumedad() << std::endl << "Agarre: " << tramo->getAgarre() << std::endl << "Mejor configuracion:" << std::endl << "Torque: " << poblacion[0]->getIDTorque() << std::endl << "Pliege: " << poblacion[0]->getIDPliege() << std::endl;
-            seEncontroRespuesta = true;
-            energiaActual -= energiaAGastar;
-            break;
-        }
+        poblacion = recorrerTramo(poblacion, tramo);
+        reproduccionMuerte(poblacion);
     }
-    if(!seEncontroRespuesta)
-        std::cout << "Tramo:" << std::endl << "Firmeza: " << tramo->getFirmeza() << std::endl << "Humedad: " << tramo->getHumedad() << std::endl << "Agarre: " << tramo->getAgarre() << std::endl;
+    double energiaAGastar = poblacion[0]->getEnergiaPorKm() * tramo->getDistancia();
+    std::cout << "Tramo:" << std::endl << "Firmeza: " << tramo->getFirmeza() << std::endl << "Humedad: " << tramo->getHumedad() << std::endl << "Agarre: " << tramo->getAgarre() << std::endl;
+    if(!(compararPropiedadesVehiculoTramo(poblacion[0], tramo)) && poblacion[0]->getEnergiaPorKm() * tramo->getDistancia() <= poblacion[0]->getEnergiaTotal())
+    {
+        std::cout << "Mejor configuracion:" << std::endl << "Torque: " << poblacion[0]->getIDTorque() << std::endl << "Pliege: " << poblacion[0]->getIDPliege() << std::endl;
+        seEncontroRespuesta = true;
+        energiaActual -= energiaAGastar;
+        std::cout << "Energia actual: " << energiaActual << std::endl;
+        return true;
+    }
+    else{
         std::cout << "Mejor configuracion" << std::endl << "No se encontro ninguna configuracion que pueda recorrer todo el tramo o tenga suficiente energia para recorrelo todo" << std::endl;
+        return false;
+    }
 }
 
 void Explorador::realizarTrabajo()
 {
-    std::thread first (metodoThread, std::ref(tramos));
+    bool seSigue = true;
+    std::thread first (metodoThread, std::ref(tramos), std::ref(seSigue));
     srand(time(NULL));
     
     
@@ -49,20 +50,21 @@ void Explorador::realizarTrabajo()
     //Codigo que le el mapa
    while (true)
    {
-       if (tramos.size()!=0)
-       {
-           if (tramos[0]==nullptr)
-           {
+        if (tramos.size()!=0)
+        {
+            if (tramos[0]==nullptr)
+            {
                break;
-           }
-           algortimoGenetico(tramos[0]);
-           tramos.erase(tramos.begin());
+            }
+            if(algortimoGenetico(tramos[0]))
+                tramos.erase(tramos.begin());
+            else{
+                seSigue = false;
+                break;
+            }
        }
        
    }
-   
-   // while(int posicionTramo = 0; posicionTramo < tramos.size(); posicionTramo++)
-        //algortimoGenetico(tramos[posicionTramo]);
 
     first.join();
     std::cout << std::endl <<"Finish";

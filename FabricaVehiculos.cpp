@@ -23,27 +23,16 @@ FabricaVehiculos::FabricaVehiculos()
 
 Vehiculo* FabricaVehiculos::crearVehiculo(int numero, double energia)
 {
-    int torqueSeleccionado = 0;
-    for(int contadorRango = 1; contadorRango <= torques.size(); contadorRango ++)
-    {
-        if(numero < ((((double) contadorRango) / ((double) torques.size()) * UINT8_MAX) + 1))
-        {
-            contadorRango--;
-            int pliegeSeleccionado = 0;
-            for(int contarRangoPliege = 1; contarRangoPliege <= plieges.size(); contarRangoPliege++)
-            {
-                if(numero < ((double)contadorRango/(double)torques.size() * UINT8_MAX + (double)contarRangoPliege/(double)canitdadCombinaciones * UINT8_MAX + 1))
-                    return new Vehiculo(numero, torques[torqueSeleccionado], plieges[pliegeSeleccionado], energia);
-               
-                else
-                    pliegeSeleccionado++;
-                
-            }
-        }
-        else
-            torqueSeleccionado++;
+    if(numero <= UINT8_MAX && numero >= 0){
+        int torqueSeleccionado = numero / (UINT8_MAX / torques.size());
+        if(torqueSeleccionado == torques.size())
+            torqueSeleccionado = torques.size() - 1;
+        int pliegeSeleccionado = (numero - (double)UINT8_MAX * ((double)torqueSeleccionado / (double)torques.size())) / (UINT8_MAX / canitdadCombinaciones);
+        if(pliegeSeleccionado == plieges.size())
+            pliegeSeleccionado = plieges.size() - 1;
+        return new Vehiculo(numero, torques[torqueSeleccionado], plieges[pliegeSeleccionado], energia);
     }
-    return new Vehiculo(0, NULL, NULL, 0);
+	return new Vehiculo(0, NULL, NULL, 0);
 }
 
 Vehiculo* FabricaVehiculos::crearHijo(Vehiculo* padre, Vehiculo* madre, double energia)

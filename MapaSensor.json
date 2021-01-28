@@ -4,15 +4,22 @@
    "Agarre": 5.0,
    "Firmeza": 10.0,
    "Humedad": 100.0,
-   "KmEnd": 100.0,
+   "KmEnd": 40.0,
    "KmStart": 0.0
   },
   "tramo1": {
-   "Agarre": 23.0,
-   "Firmeza": 43.0,
-   "Humedad": 30.0,
-   "KmEnd": 200.0,
-   "KmStart": 101.0
+   "Agarre": 30.0,
+   "Firmeza": 32.0,
+   "Humedad": 60.0,
+   "KmEnd": 240.0,
+   "KmStart": 229.0
+  },
+  "tramo2": {
+   "Agarre": 95.0,
+   "Firmeza": 100.0,
+   "Humedad": 0.0,
+   "KmEnd": 268.0,
+   "KmStart": 241.0
   }
  }
 }

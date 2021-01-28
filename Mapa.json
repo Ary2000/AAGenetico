@@ -8,10 +8,7 @@
         "tramo6":{"Agarre":45,"Firmeza":50,"Humedad":58,"KmEnd":145,"KmStart":121},
         "tramo7":{"Agarre":78,"Firmeza":82,"Humedad":25,"KmEnd":180,"KmStart":146},
         "tramo8":{"Agarre":72,"Firmeza":66,"Humedad":20,"KmEnd":200,"KmStart":181},
-        "tramo9":{"Agarre":6,"Firmeza":14,"Humedad":90,"KmEnd":228,"KmStart":201},
-        "tramo10":{"Agarre":30,"Firmeza":32,"Humedad":60,"KmEnd":240,"KmStart":229},
-        "tramo11":{"Agarre":95,"Firmeza":100,"Humedad":0,"KmEnd":268,"KmStart":241},
-        "tramo12":{"Agarre":79,"Firmeza":69,"Humedad":39,"KmEnd":280,"KmStart":269}
+        "tramo9":{"Agarre":6,"Firmeza":14,"Humedad":90,"KmEnd":228,"KmStart":201}
     }           
     
 }        

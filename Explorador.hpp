@@ -20,7 +20,7 @@
 #define CANTIDAD_CICLOS 10
 #define ENERGIA_TOTAL 7000
 #define CICLOS_FALLIDOS_MAXIMO 5
-#define CICLOS 10
+#define CICLOS 50
 
 class Explorador{
 
@@ -36,7 +36,7 @@ class Explorador{
         
         void reproduccionMuerte(std::vector<Vehiculo*>& poblacion);
         std::vector<Vehiculo*> recorrerTramo(std::vector<Vehiculo*> poblacion, Tramo* tramo);
-        void algortimoGenetico(Tramo* tramo);
+        bool algortimoGenetico(Tramo* tramo);
         int compararPropiedadesVehiculoTramo(Vehiculo* vehiculo, Tramo* tramo);
         bool recorreConSuficienteEnergia(Vehiculo* vehiculo, Tramo* tramo);
         //void metodoThread();
