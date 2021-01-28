@@ -17,6 +17,9 @@ class FabricaVehiculos{
     private:
         int canitdadCombinaciones;
 
+        std::vector<int> combinacionPadre = {63,31,15,7,3};
+        std::vector<int> combinacionMadre = {192,224,240,248,252};
+
         std::vector<Pliege*> plieges;
         std::vector<Torque*> torques;
 

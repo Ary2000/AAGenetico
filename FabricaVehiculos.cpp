@@ -50,9 +50,6 @@ Vehiculo* FabricaVehiculos::crearHijo(Vehiculo* padre, Vehiculo* madre, double e
 {
     int cromosomaPadre = padre->getCromosoma();
     int cromosomaMadre = madre->getCromosoma();
-    std::vector<int> combinacionPadre = {63,31,15,7,3};
-    std::vector<int> combinacionMadre = {192,224,240,248,252};
-
 
     int tipoReproducion = rand() % 5;
     cromosomaPadre = cromosomaPadre & combinacionPadre[tipoReproducion];
